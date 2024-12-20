@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
       console.log("successfull SignOut");
     })
     .catch(error =>{
-      console.log("Failed to Sign Out");
+      console.log("Failed to Sign Out",error.message);
     })
   }
 
@@ -19,11 +19,15 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink>Home</NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink>Home</NavLink>
       </li>
+      <li>
+        <NavLink>Home</NavLink>
+      </li>
+      
     </>
   );
   return (
@@ -53,7 +57,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to={"/"} className="btn btn-ghost text-xl">Job Protal</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
