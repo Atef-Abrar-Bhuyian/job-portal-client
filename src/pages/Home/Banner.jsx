@@ -10,13 +10,13 @@ const Banner = () => {
           <motion.img
             src={officeTeam}
             animate ={{y:[60,100,60]}}
-            transition={{duration:5, repeat:Infinity}}
+            transition={{duration:10, repeat:Infinity}}
             className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] shadow-2xl border-b-4 border-l-4 border-blue-400"
           />
           <motion.img
             src={officeTeam}
             animate ={{x:[100,150,100]}}
-            transition={{duration:5, repeat:Infinity}}
+            transition={{duration:10, delay:5 , repeat:Infinity}}
             className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] shadow-2xl border-b-4 border-l-4 border-blue-400"
           />
         </div>

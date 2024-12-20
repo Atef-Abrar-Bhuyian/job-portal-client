@@ -3,6 +3,7 @@ import loginLottieData from "../../assets/Lottie/login.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialLogin from "../shared/SocialLogin";
 const Signin = () => {
     const {signInUser} = useContext(AuthContext)
   const [seePassword, setSeePassword] = useState(false);
@@ -83,6 +84,9 @@ const Signin = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <div>
+            <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
     </div>

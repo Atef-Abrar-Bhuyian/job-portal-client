@@ -3,6 +3,7 @@ import registerLottieData from "../../assets/Lottie/register.json";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../shared/SocialLogin";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -95,6 +96,9 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
+          <div>
+            <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
     </div>
