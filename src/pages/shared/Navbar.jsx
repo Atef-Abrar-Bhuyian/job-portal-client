@@ -1,6 +1,21 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOut=()=>{
+    signOutUser()
+    .then(()=>{
+      console.log("successfull SignOut");
+    })
+    .catch(error =>{
+      console.log("Failed to Sign Out");
+    })
+  }
+
+
   const links = (
     <>
       <li>
@@ -41,13 +56,23 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link to={"/register"} className="btn">Register</Link>
-        <Link to={"/login"} className="btn">Sign In</Link>
+        {user ? (
+          <>
+            <button onClickCapture={handleSignOut} className="btn">Sign Out</button>
+          </>
+        ) : (
+          <>
+            <Link to={"/register"} className="btn">
+              Register
+            </Link>
+            <Link to={"/login"} className="btn">
+              Sign In
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
