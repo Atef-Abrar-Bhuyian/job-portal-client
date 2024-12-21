@@ -1,14 +1,25 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { TbCoinTakaFilled } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const HotJobCart = ({ job }) => {
   const {
+    // eslint-disable-next-line react/prop-types
+    _id,
+    // eslint-disable-next-line react/prop-types
     title,
+    // eslint-disable-next-line react/prop-types
     company,
+    // eslint-disable-next-line react/prop-types
     company_logo,
+    // eslint-disable-next-line react/prop-types
     requirements,
+    // eslint-disable-next-line react/prop-types
     description,
+    // eslint-disable-next-line react/prop-types
     location,
+    // eslint-disable-next-line react/prop-types
     salaryRange,
   } = job;
   return (
@@ -30,14 +41,27 @@ const HotJobCart = ({ job }) => {
         <div className="badge badge-secondary">NEW</div>
         <p> {description} </p>
         <div className="flex gap-2 flex-wrap ">
-            {
-                requirements.map((skill,idx) => <p key={idx} className="border rounded-md text-center p-2 hover:text-blue-500">{skill}</p>)
-            }
+          {
+            // eslint-disable-next-line react/prop-types
+            requirements.map((skill, idx) => (
+              <p
+                key={idx}
+                className="border rounded-md text-center p-2 hover:text-blue-500"
+              >
+                {skill}
+              </p>
+            ))
+          }
         </div>
         <div className="card-actions justify-end items-center mt-4">
-            <p className="flex items-center gap-2">Salary: <TbCoinTakaFilled />
-            {salaryRange.min} - {salaryRange.max} {salaryRange.currency} </p>
+          <p className="flex items-center gap-2">
+            Salary: <TbCoinTakaFilled />
+            {/* eslint-disable-next-line react/prop-types */}
+            {salaryRange.min} - {salaryRange.max} {salaryRange.currency}{" "}
+          </p>
+          <Link to={`/jobs/${_id}`}>
           <button className="btn btn-primary">Apply</button>
+          </Link>
         </div>
       </div>
     </div>
