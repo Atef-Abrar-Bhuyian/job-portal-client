@@ -4,9 +4,14 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 const Signin = () => {
-    const {signInUser} = useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { signInUser } = useContext(AuthContext);
   const [seePassword, setSeePassword] = useState(false);
+
+  const from = location.state || "/";
 
   const handleSeePassword = () => {
     if (setSeePassword) {
@@ -19,16 +24,17 @@ const Signin = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email,password);
+    console.log(email, password);
 
-    signInUser(email,password)
-    .then(result =>{
+    signInUser(email, password)
+      .then((result) => {
         console.log("sign in", result.user);
-    })
-    .catch(error =>{
+        navigate(from);
+      })
+      .catch((error) => {
         console.log(error);
-    })
-};
+      });
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">

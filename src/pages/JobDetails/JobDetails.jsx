@@ -1,4 +1,5 @@
 import { BiCategoryAlt } from "react-icons/bi";
+import { CiLinkedin } from "react-icons/ci";
 import {
   FaBookmark,
   FaHourglassHalf,
@@ -6,15 +7,20 @@ import {
   FaMoneyCheckAlt,
   FaRegUserCircle,
 } from "react-icons/fa";
-import { FaMoneyCheckDollar, FaSquareFacebook, FaSquareXTwitter } from "react-icons/fa6";
+import {
+  FaMoneyCheckDollar,
+  FaSquareFacebook,
+  FaSquareXTwitter,
+} from "react-icons/fa6";
 import { IoIosPerson } from "react-icons/io";
 import { MdOutlineAlternateEmail, MdTimelapse } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
   const {
+    _id,
     title,
     company,
     applicationDeadline,
@@ -74,7 +80,9 @@ const JobDetails = () => {
           </div>
           <div className="flex items-center gap-4">
             <div>
+              <Link to={`/jobApply/${_id}`}>
               <button className="btn">Apply Now</button>
+              </Link>
             </div>
             <div>
               <FaBookmark className="text-2xl" />
@@ -84,6 +92,7 @@ const JobDetails = () => {
 
         {/* Description section */}
         <div className="grid grid-cols-4 my-8">
+            {/* description */}
           <div className="col-span-3">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Job Description</h3>
@@ -108,46 +117,54 @@ const JobDetails = () => {
             <div className="space-y-4 mt-5  items-center">
               <h3 className="text-2xl font-semibold mr-4">Share This Job: </h3>
               <div className="flex items-center gap-3">
-              <button className="btn bg-blue-700 text-white"><FaSquareFacebook className="text-2xl" /> Facebook
-              </button>
-              <button className="btn bg-black text-white"><FaSquareXTwitter className="text-2xl" />            </button>
-              <button className="btn bg-rose-500 text-white"><FaInstagram className="text-2xl" /> Instagram
-              </button>
+                <button className="btn bg-blue-700 text-white">
+                  <FaSquareFacebook className="text-2xl" /> Facebook
+                </button>
+                <button className="btn bg-black text-white">
+                  <FaSquareXTwitter className="text-2xl" />{" "}
+                </button>
+                <button className="btn bg-rose-500 text-white">
+                  <FaInstagram className="text-2xl" /> Instagram
+                </button>
+                <button className="btn bg-blue-600 text-white">
+                  <CiLinkedin className="text-2xl" /> Instagram
+                </button>
               </div>
             </div>
           </div>
+          {/* job overview */}
           <div className="col-span-1">
             <div className="p-4 border-2 rounded-xl bg-blue-400 bg-opacity-20 ">
               <h3 className="text-2xl font-bold">Job Overview</h3>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <FaHourglassHalf className="text-2xl" />
                 <div>
                   <p className="font-bold">Expiration date:</p>
                   <p>{applicationDeadline}</p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <SlLocationPin className="text-2xl" />
                 <div>
                   <p className="font-bold">Location:</p>
                   <p>{location}</p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <FaRegUserCircle className="text-2xl" />
                 <div>
                   <p className="font-bold">Job Title:</p>
                   <p>{title}</p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <BiCategoryAlt className="text-2xl" />
                 <div>
                   <p className="font-bold">Category:</p>
                   <p>{category}</p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <FaMoneyCheckAlt className="text-2xl" />
                 <div>
                   <p className="font-bold">Salary:</p>
@@ -159,14 +176,14 @@ const JobDetails = () => {
                   </p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <IoIosPerson className="text-2xl" />
                 <div>
                   <p className="font-bold">HR Name:</p>
                   <p>{hr_name}</p>
                 </div>
               </div>
-              <div className="my-4 flex gap-2 items-center">
+              <div className="my-4 flex gap-3 items-center">
                 <MdOutlineAlternateEmail className="text-2xl" />
                 <div>
                   <p className="font-bold">HR Email:</p>
