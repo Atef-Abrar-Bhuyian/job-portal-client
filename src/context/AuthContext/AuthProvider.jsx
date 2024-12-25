@@ -48,7 +48,6 @@ const signInWithGoogle = () =>{
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("State Capture:", currentUser);
       setLoading(false);
     });
 
