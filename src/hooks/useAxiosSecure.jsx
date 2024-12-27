@@ -37,3 +37,16 @@ const useAxiosSecure = () => {
 };
 
 export default useAxiosSecure;
+
+
+
+/**
+ * 
+ * axios: get,post,put/patch,delete ---> easier
+ * interceptor: 
+ * client -----------------|--------------------> server
+ * client <-----------------|-------------------- server
+ * in the interceptor for response = needs two function
+ * 
+ * 
+ */
