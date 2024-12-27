@@ -5,11 +5,11 @@ const ViewApplication = () => {
   const applications = useLoaderData();
 
   const handleStatusUpdate = (e, id) => {
-    console.log(e.target.value, id);
+    // console.log(e.target.value, id);
     const data = {
       status: e.target.value,
     };
-    fetch(`http://localhost:5000/job-applications/${id}`, {
+    fetch(`https://job-protal-server-ten.vercel.app/job-applications/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

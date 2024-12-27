@@ -49,29 +49,29 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("state capture: ", currentUser?.email);
+      // console.log("state capture: ", currentUser?.email);
       if (currentUser?.email) {
         const user = { email: currentUser.email };
 
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://job-protal-server-ten.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setLoading(false);
           });
       } else {
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://job-protal-server-ten.vercel.app/logout",
             {},
             {
               withCredentials: true,
             }
           )
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setLoading(false);
           });
       }

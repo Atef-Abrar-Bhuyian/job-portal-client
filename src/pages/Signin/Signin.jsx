@@ -26,21 +26,21 @@ const Signin = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     signInUser(email, password)
       .then((result) => {
-        console.log("sign in", result.user.email);
+        // console.log("sign in", result.user.email);
         const user = { email: email };
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://job-protal-server-ten.vercel.app/jwt", user, { withCredentials: true })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
           });
         navigate(from);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
