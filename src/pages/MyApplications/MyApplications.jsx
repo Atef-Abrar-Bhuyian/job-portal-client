@@ -24,7 +24,7 @@ const MyApplications = () => {
     .then(res => setJobs(res.data))
 
 
-  }, [user.email]);
+  });
 
   return (
     <div className="my-10">

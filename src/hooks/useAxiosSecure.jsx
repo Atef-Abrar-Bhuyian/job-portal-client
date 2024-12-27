@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
     const {signOutUser} = useAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect( ()=>{
         axiosInstance.interceptors.response.use( response =>{
@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
             return Promise.reject(error)
 
         } )
-    } ,[])
+    })
 
 
   return axiosInstance;
