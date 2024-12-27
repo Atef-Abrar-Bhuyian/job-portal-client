@@ -9,10 +9,11 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import axios from "axios";
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    const googleProvider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,12 +30,12 @@ const AuthProvider = ({ children }) => {
   const signOutUser = () => {
     setLoading(true);
     return signOut(auth);
-};
+  };
 
-const signInWithGoogle = () =>{
+  const signInWithGoogle = () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider)
-}
+    return signInWithPopup(auth, googleProvider);
+  };
 
   const authInfo = {
     user,
@@ -48,6 +49,34 @@ const signInWithGoogle = () =>{
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log("state capture: ", currentUser?.email);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+
+        axios
+          .post("http://localhost:5000/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:5000/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            setLoading(false);
+          });
+      }
+
+      // put it in the right place
       setLoading(false);
     });
 
