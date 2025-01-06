@@ -24,6 +24,7 @@ const useAxiosSecure = () => {
                     // console.log("logged Out User");
                     navigate('/login')
                 })
+                // eslint-disable-next-line no-unused-vars
                 .catch(error=> {
                     // console.log(error)
                 })
