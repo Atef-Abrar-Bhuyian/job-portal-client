@@ -7,7 +7,9 @@ import { BiSearch } from "react-icons/bi";
 const AllJobs = () => {
   const [sort, setSort] = useState(false);
   const [search, setSearch] = useState("");
-  const { jobs, loading } = useJobs(sort, search);
+  const [minSalary,setMinSalary] = useState("")
+  const [maxSalary,setMaxSalary] = useState("")
+  const { jobs, loading } = useJobs(sort, search,minSalary,maxSalary);
   if (loading) {
     return <h2>Data Loading</h2>;
   }
@@ -21,13 +23,25 @@ const AllJobs = () => {
         >
           {sort ? "Sorted By Salary" : "Sort By Salary"}
         </button>
-        <div className="flex items-center justify-center gap-2">
           <BiSearch />
+        <div className="flex items-center justify-center gap-2">
           <input
             onKeyUp={(e) => setSearch(e.target.value)}
             type="text"
             className="input w-full"
             placeholder="Search Jobs By Location"
+          />
+          <input
+            onKeyUp={(e) => setMinSalary(e.target.value)}
+            type="text"
+            className="input max-w-sm"
+            placeholder="Min Salary"
+          />
+          <input
+            onKeyUp={(e) => setMaxSalary(e.target.value)}
+            type="text"
+            className="input max-w-sm"
+            placeholder="Max Salary"
           />
         </div>
       </div>
