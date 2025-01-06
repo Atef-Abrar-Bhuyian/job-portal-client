@@ -10,6 +10,7 @@ import MyApplications from "../pages/MyApplications/MyApplications";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplication from "../pages/ViewApplication/ViewApplication";
+import AllJobs from "../pages/AllJobs/AllJobs";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/allJobs",
+        element: <AllJobs></AllJobs>,
       },
       {
         path: "/register",
@@ -78,7 +83,10 @@ const router = createBrowserRouter([
             <ViewApplication></ViewApplication>
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`https://job-protal-server-ten.vercel.app/job-application/jobs/${params.job_id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://job-protal-server-ten.vercel.app/job-application/jobs/${params.job_id}`
+          ),
       },
     ],
   },

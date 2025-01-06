@@ -35,7 +35,7 @@ const ViewApplication = () => {
       <h2 className="text-3xl">
         Application For This Job: {applications.length}{" "}
       </h2>
-      <table className="table">
+      <table className="table my-10 bg-white">
         {/* head */}
         <thead>
           <tr>

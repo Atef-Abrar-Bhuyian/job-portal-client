@@ -10,6 +10,7 @@ const Navbar = () => {
     .then(()=>{
       // console.log("successfull SignOut");
     })
+    // eslint-disable-next-line no-unused-vars
     .catch(error =>{
       // console.log("Failed to Sign Out",error.message);
     })
@@ -20,6 +21,9 @@ const Navbar = () => {
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/allJobs"}>All Jobs</NavLink>
       </li>
       <li>
         <NavLink to={"/myApplications"}>My Applications</NavLink>

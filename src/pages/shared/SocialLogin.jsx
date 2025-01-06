@@ -6,7 +6,7 @@ const SocialLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state || "/";
+  const from = location?.state || "/";
 
   const { signInWithGoogle } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
